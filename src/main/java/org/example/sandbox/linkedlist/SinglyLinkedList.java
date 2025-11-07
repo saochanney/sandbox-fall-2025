@@ -8,27 +8,30 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
     private Node tail;
     private int size;
 
+    // O(1) time complexity
     public SinglyLinkedList() {
         head = null;
         tail = null;
         size = 0;
     }
 
+    // O(1) time complexity
     @Override
     public void addFirst(E element) {
 
-        Node node = new Node(element, head); // 1 & 2
+        Node node = new Node(element, head); // 1 & 2 O(1)
 
-        if (head == null) { // 3
-            head = node;
-            tail = node;
+        if (head == null) { // 3 O(1)
+            head = node; // O(1)
+            tail = node; // O(1)
         } else {
-            head = node;
+            head = node; // O(1)
         }
-        size++;
+        size++; // O(1)
 
     }
 
+    // O(1) time complexity
     @Override
     public void addLast(E element) {
 
@@ -46,6 +49,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
 
     }
 
+    // O(1)
     @Override
     public E pollFirst() {
 
@@ -69,6 +73,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         return element;
     }
 
+    // O(n)
     @Override
     public E pollLast() {
 
@@ -84,7 +89,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
             } else {
                 Node current = head;
                 Node previous = head;
-                while(current.next != null) {
+                while(current.next != null) { // O(n)
                     previous = current; // 2
                     current = current.next; // 2
                 }
@@ -98,6 +103,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         return element;
     }
 
+    // O(1)
     @Override
     public E peekFirst() {
 
@@ -111,6 +117,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         return element;
     }
 
+    //O(1)
     @Override
     public E peekLast() {
 
@@ -123,6 +130,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         return element;
     }
 
+    // O(n)
     @Override
     public void clear() {
 
@@ -139,6 +147,7 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         size = 0;
     }
 
+    // O(n)
     @Override
     public boolean contains(E element) {
 
@@ -155,20 +164,22 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         return contains;
     }
 
+    //O(1)
     @Override
     public int size() {
         return this.size;
     }
 
+    // O(n) + 2*O(m) = O(n)
     @Override
     public String toString() {
 
-        StringBuilder builder = new StringBuilder("[");
-        StringJoiner joiner = new StringJoiner(", ");
+        StringBuilder builder = new StringBuilder("[");  // O(m)
+        StringJoiner joiner = new StringJoiner(", "); // O(m)
 
         Node current = head;
         if (current != null) {
-            while (current != null) {
+            while (current != null) { // O(n)
                 joiner.add(current.element.toString());
                 current = current.next;
             }
@@ -184,9 +195,9 @@ public class SinglyLinkedList<E> implements LinkedList<E> {
         E element;
         Node next;
 
-        public Node(E element, Node next) {
-            this.element = element;
-            this.next = next;
+        public Node(E element, Node next) { // O(1)
+            this.element = element; // O(1)
+            this.next = next; // O(1)
         }
     }
 }
